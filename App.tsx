@@ -1,21 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { StyleSheet, Text, ScrollView, SafeAreaView } from "react-native";
+import CardFood from "./components/CardFood";
+import Constants from "expo-constants";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.scrollView}>
+        <CardFood name="Salada Romana" countPeople={2} />
+        <CardFood name="Salada Romana" countPeople={2} />
+        <CardFood name="Salada Romana" countPeople={2} />
+        <CardFood name="Salada Romana" countPeople={2} />
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: Constants.statusBarHeight,
+  },
+
+  scrollView: {
+    backgroundColor: "#fff",
+    paddingHorizontal: 16,
   },
 });
