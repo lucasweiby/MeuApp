@@ -1,30 +1,23 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, ScrollView, SafeAreaView } from "react-native";
-import CardFood from "./components/CardFood";
-import Constants from "expo-constants";
+import { useFonts } from "expo-font";
+import TopRecipes from "./pages/TopRecipes";
 
 export default function App() {
+  const [loaded] = useFonts({
+    Mulish_Light: require("./assets/fonts/Mulish-Light.ttf"),
+    Mulish_Regular: require("./assets/fonts/Mulish-Regular.ttf"),
+    Mulish_SemiBold: require("./assets/fonts/Mulish-SemiBold.ttf"),
+    Mulish_Bold: require("./assets/fonts/Mulish-Bold.ttf"),
+    Mulish_ExtraBold: require("./assets/fonts/Mulish-ExtraBold.ttf"),
+  });
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView}>
-        <CardFood name="Salada Romana" countPeople={2} />
-        <CardFood name="Salada Romana" countPeople={2} />
-        <CardFood name="Salada Romana" countPeople={2} />
-        <CardFood name="Salada Romana" countPeople={2} />
-      </ScrollView>
-    </SafeAreaView>
+    <>
+      <TopRecipes />
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: Constants.statusBarHeight,
-  },
-
-  scrollView: {
-    backgroundColor: "#fff",
-    paddingHorizontal: 16,
-  },
-});
